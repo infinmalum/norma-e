@@ -4,6 +4,7 @@ package tool
 
 import (
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"syscall"
@@ -17,11 +18,6 @@ import (
 // ":" in each branch stops the shell from exec-ing the final sleep in place,
 // which would drop the allocation the test depends on.
 const holdOrphan = `( { x=a; while [ ${#x} -lt 200000000 ]; do x="$x$x"; done; sleep 30; :; } & ) ; sleep 30; :`
-
-// forkShared allocates once and then forks five subshells that hold the same
-// pages copy-on-write. Summing per-process RSS counts those pages six times
-// (~880 MiB measured); the real footprint is ~145 MiB.
-const forkShared = `x=a; while [ ${#x} -lt 100000000 ]; do x="$x$x"; done; for i in 1 2 3 4 5; do { sleep 25; :; } & done; sleep 25; :`
 
 // A leaker whose parent exits must still be caught. Measuring the ppid tree
 // instead of the process group loses it the moment init adopts it: the walk
@@ -48,46 +44,96 @@ func TestMemGuardCatchesOrphanedDescendant(t *testing.T) {
 // command that never leaked, so a group over the cheap bound must be confirmed
 // against Pss before it dies.
 func TestMemGuardSparesSharedPages(t *testing.T) {
-	// Between the two measures: sum(RSS) ~880 MiB is over, Pss ~145 MiB is not.
-	t.Setenv("AGENT_CORE_TASK_MEM_CAP", "400m")
+	if _, ok := procPSS(os.Getpid()); !ok {
+		t.Skip("PSS is unavailable on this host")
+	}
+
+	const mappingSize = 32 << 20
+	dir := t.TempDir()
+	// Back the mapping with real pages even if the temporary directory is on tmpfs.
+	if err := os.WriteFile(filepath.Join(dir, "shared"), make([]byte, mappingSize), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	testBinary, err := os.Executable()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	t.Setenv("AGENT_CORE_TASK_MEM_CAP", "80m")
+	limit := memCapBytes()
 	m := newTestManager(t)
-	task, err := m.Spawn(SpawnSpec{Command: forkShared})
+	task, err := m.Spawn(SpawnSpec{
+		Command:    `for i in 1 2 3 4; do "$MEM_GUARD_TEST_BINARY" -test.run='^TestMemGuardSharedMappingHelper$' & done; wait`,
+		WorkingDir: dir,
+		Env:        []string{"MEM_GUARD_TEST_BINARY=" + testBinary},
+	})
 	if err != nil {
 		t.Fatalf("Spawn: %v", err)
 	}
+	defer m.Kill(task.ID)
 	m.Background(task.ID)
 
-	// Wait for the two measures to actually diverge: while the parent is still
-	// growing its string alone there is nothing shared yet and RSS == Pss, so
-	// polling on RSS alone would sample before the forks exist.
-	pgid := task.cmd.Process.Pid
-	var rss, pss int64
-	var ok bool
-	deadline := time.Now().Add(20 * time.Second)
-	for time.Now().Before(deadline) {
-		rss = pgrpRSS([]int{pgid})[pgid]
-		pss, ok = pgrpPSS(pgid)
-		if ok && rss > 400<<20 && pss < 300<<20 {
+	// Each worker signals after faulting in the same fixed-size mapping. The
+	// fixture can reach the desired RSS/PSS split without growing private
+	// Bash strings whose intermediate allocations can cross the cap.
+	deadline := time.Now().Add(10 * time.Second)
+	for {
+		out, _ := m.Output(task.ID, 0)
+		info, _ := m.Get(task.ID)
+		if info.Status.Terminal() || time.Now().After(deadline) {
+			t.Fatalf("shared mapping workers failed to start: %s/%s, output=%q", info.Status, info.Reason, out)
+		}
+		if strings.Count(out, "mapping ready") == 4 {
 			break
 		}
-		if info, ok := m.Get(task.ID); ok && info.Status.Terminal() {
-			t.Fatalf("task died at %s/%s before the shared allocation was resident (rss=%dMiB pss=%dMiB)",
-				info.Status, info.Reason, rss>>20, pss>>20)
-		}
-		time.Sleep(100 * time.Millisecond)
-	}
-	if !ok || rss <= 400<<20 || pss >= 400<<20 {
-		t.Skipf("workload did not land between the two measures on this host (rss=%dMiB pss=%dMiB ok=%v)", rss>>20, pss>>20, ok)
+		time.Sleep(10 * time.Millisecond)
 	}
 
-	// Several guard passes with the group sitting over the cheap bound.
-	time.Sleep(3 * memSampleInterval)
-	info, _ := m.Get(task.ID)
-	if info.Status.Terminal() {
-		t.Fatalf("killed a group whose real footprint (%d MiB Pss) is under the %s cap; only its double-counted RSS (%d MiB) was over",
-			pss>>20, humanBytes(memCapBytes()), rss>>20)
+	pgid := task.cmd.Process.Pid
+	rss := pgrpRSS([]int{pgid})[pgid]
+	pss, ok := pgrpPSS(pgid)
+	if !ok || rss <= limit || pss >= limit {
+		t.Fatalf("expected RSS > cap > PSS, got rss=%dMiB pss=%dMiB cap=%dMiB measured=%v",
+			rss>>20, pss>>20, limit>>20, ok)
 	}
-	m.Kill(task.ID)
+
+	m.memGuardPass()
+	if info, _ := m.Get(task.ID); info.Status != TaskRunning {
+		t.Fatalf("shared mapping was terminated: %s/%s, rss=%dMiB pss=%dMiB",
+			info.Status, info.Reason, rss>>20, pss>>20)
+	}
+}
+
+// TestMemGuardSharedMappingHelper runs in each worker spawned by the manager.
+func TestMemGuardSharedMappingHelper(t *testing.T) {
+	if os.Getenv("MEM_GUARD_TEST_BINARY") == "" {
+		return
+	}
+	f, err := os.Open("shared")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer f.Close()
+	info, err := f.Stat()
+	if err != nil {
+		t.Fatal(err)
+	}
+	mapping, err := syscall.Mmap(int(f.Fd()), 0, int(info.Size()), syscall.PROT_READ, syscall.MAP_SHARED)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer syscall.Munmap(mapping)
+	var sum byte
+	for offset, pageSize := 0, os.Getpagesize(); offset < len(mapping); offset += pageSize {
+		sum |= mapping[offset]
+	}
+	if sum != 0 {
+		t.Fatalf("unexpected mapping contents: %d", sum)
+	}
+	if _, err := os.Stdout.WriteString("mapping ready\n"); err != nil {
+		t.Fatal(err)
+	}
+	time.Sleep(30 * time.Second)
 }
 
 // pgrpRSS must see every member of the group, including one the task's own
