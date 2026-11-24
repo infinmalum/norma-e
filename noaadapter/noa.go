@@ -1,9 +1,9 @@
 package noaadapter
 
 import (
-	"github.com/infinmalum/Lapua/agentcore"
-	"github.com/infinmalum/Lapua/noa"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/agentcore"
+	"github.com/infinmalum/norma-e/noa"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // Enable wires noa into a set of agentcore Options.

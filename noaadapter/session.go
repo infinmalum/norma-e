@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // Options configures one noa-managed session.

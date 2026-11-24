@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // Multi-tier compression is what keeps summaries from accumulating without

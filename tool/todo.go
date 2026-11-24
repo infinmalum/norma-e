@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 // TodoStatus is the state of a todo item.

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // recSummarizer records calls and the messages it was handed.

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 func toolUse(id, name string) llm.Message {

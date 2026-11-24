@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // A real 1x1 PNG; everything the Read path sees is magic bytes + payload.

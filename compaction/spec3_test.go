@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // captureProvider records each request and yields a scripted reply, optionally

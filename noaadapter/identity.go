@@ -10,7 +10,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // DeriveMessageID computes a message's stable identity.

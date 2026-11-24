@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 	"golang.org/x/net/html"
 )
 

@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // Media must round-trip the noa pipeline: projection yields stub cores with

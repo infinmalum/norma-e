@@ -9,9 +9,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // QueryInput is a fully-resolved request to run the loop.

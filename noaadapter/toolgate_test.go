@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/noa"
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/noa"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // harness.execOne validates a call against the tool's InputSchema before

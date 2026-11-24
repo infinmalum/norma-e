@@ -32,7 +32,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // Record is one line of a JSONL transcript.

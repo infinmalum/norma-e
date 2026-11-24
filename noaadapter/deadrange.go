@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // DeadRangeTracker breaks the loop where a model keeps asking to compress refs

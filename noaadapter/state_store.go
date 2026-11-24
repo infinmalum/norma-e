@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // stateFileVersion guards against silently misreading a future format.

@@ -12,8 +12,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // Approver is the host's plan-approval callback (a CLI prompt, a GUI, or an

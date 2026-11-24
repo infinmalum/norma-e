@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 // Deferred tools: a mechanism to keep a tool callable while withholding its schema

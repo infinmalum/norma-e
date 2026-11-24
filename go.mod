@@ -1,4 +1,4 @@
-module github.com/infinmalum/Lapua
+module github.com/infinmalum/norma-e
 
 go 1.26.3
 

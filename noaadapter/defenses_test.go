@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/noa"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/noa"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 func deadRanges(refs ...[2]string) []noa.CompressRange {

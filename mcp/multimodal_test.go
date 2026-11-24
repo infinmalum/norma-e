@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // Text-only responses keep the exact old shape: one text block.

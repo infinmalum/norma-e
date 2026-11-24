@@ -1,10 +1,12 @@
-# Lapua
+# norma-e
 
-Lapua is a Go SDK for building tool-using agents. It provides a streaming execution loop, host-controlled tool permissions, and conversation state behind `agentcore.Session`. It supports the Anthropic Messages, OpenAI Chat Completions, and OpenAI Responses APIs.
+norma-e is a Go SDK for building tool-using agents. It provides a streaming execution loop, host-controlled tool permissions, and conversation state behind `agentcore.Session`. It supports the Anthropic Messages, OpenAI Chat Completions, and OpenAI Responses APIs.
 
-Lapua is a fork of [Norma](https://github.com/Autumn-27/Norma), originally created by [Autumn-27](https://github.com/Autumn-27). Original copyright © 2026 Autumn-27. See [LICENSE](LICENSE) for the Apache 2.0 license and copyright notice.
+norma-e is a fork of [Norma](https://github.com/Autumn-27/Norma), originally created by [Autumn-27](https://github.com/Autumn-27). Original copyright © 2026 Autumn-27. See [LICENSE](LICENSE) for the Apache 2.0 license and copyright notice.
 
-Build with Go 1.26.3 or later. Import SDK packages under `github.com/infinmalum/Lapua`, for example `github.com/infinmalum/Lapua/agentcore`.
+Build with Go 1.26.3 or later. Import SDK packages under `github.com/infinmalum/norma-e`, for example `github.com/infinmalum/norma-e/agentcore`.
+
+Starting with v0.7.0, use this module path when upgrading from earlier releases. Update your Go imports and replace the old module requirement with `go get github.com/infinmalum/norma-e@v0.7.0`, then run `go mod tidy`.
 
 ## Packages
 
@@ -54,12 +56,12 @@ for ev, err := range sess.Prompt(ctx, "Add a /health endpoint and run the tests.
 ## CLI demo
 
 ```bash
-go build -o lapua ./cmd/agentcore
+go build -o norma-e ./cmd/agentcore
 
-ANTHROPIC_API_KEY=... ./lapua -provider anthropic -model your-model-name
-OPENAI_API_KEY=...    ./lapua -provider openai    -model gpt-4o
-OPENAI_API_KEY=...    ./lapua -provider openai-responses -model your-model-name
-./lapua -provider openai -model gpt-4o -yes -p "summarize the go files here"
+ANTHROPIC_API_KEY=... ./norma-e -provider anthropic -model your-model-name
+OPENAI_API_KEY=...    ./norma-e -provider openai    -model gpt-4o
+OPENAI_API_KEY=...    ./norma-e -provider openai-responses -model your-model-name
+./norma-e -provider openai -model gpt-4o -yes -p "summarize the go files here"
 ```
 
 Mutating tools (Write/Edit/Bash) prompt for approval unless `-yes` is set. Supply your own system prompt with `-system FILE`.

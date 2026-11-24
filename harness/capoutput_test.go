@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // The global post-tool net caps an oversized text block regardless of the tool.

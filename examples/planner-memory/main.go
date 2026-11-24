@@ -14,11 +14,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/infinmalum/Lapua/agentcore"
-	"github.com/infinmalum/Lapua/harness"
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/memory"
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/agentcore"
+	"github.com/infinmalum/norma-e/harness"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/memory"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 func main() {

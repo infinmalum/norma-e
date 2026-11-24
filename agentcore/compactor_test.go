@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/compaction"
-	"github.com/infinmalum/Lapua/harness"
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/compaction"
+	"github.com/infinmalum/norma-e/harness"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 type stubCompactor struct{}

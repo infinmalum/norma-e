@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // Image/document blocks carry the fixed media cost (2000 tokens), not their

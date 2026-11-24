@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 // The interactive-shell tool family (opt-in; NOT in DefaultTools). ShellSessionTools

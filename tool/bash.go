@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 // catastrophicBash matches a small set of irreversibly destructive commands

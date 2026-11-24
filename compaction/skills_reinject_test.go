@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // With many skills behind the boundary whose combined size exceeds the total

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // Simulates a long-running conversation that repeatedly grows past the auto

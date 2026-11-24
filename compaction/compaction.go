@@ -25,7 +25,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // Summarizer condenses messages into a digest. Injected so the host controls

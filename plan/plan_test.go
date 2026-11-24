@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 func TestControllerTransitions(t *testing.T) {

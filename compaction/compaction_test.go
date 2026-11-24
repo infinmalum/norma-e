@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 func bigMsg(role llm.Role, n int) llm.Message {

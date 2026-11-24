@@ -1,6 +1,6 @@
 package tool
 
-import "github.com/infinmalum/Lapua/llm"
+import "github.com/infinmalum/norma-e/llm"
 
 // Registry is an ordered, name-indexed collection of tools (FR-04.3).
 type Registry struct {

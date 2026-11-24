@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // Summary generation constants (== claude-code).

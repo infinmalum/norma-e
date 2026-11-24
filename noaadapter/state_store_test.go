@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 func sampleState() noa.CompressionState {

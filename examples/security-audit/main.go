@@ -9,12 +9,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/infinmalum/Lapua/agentcore"
-	"github.com/infinmalum/Lapua/harness"
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/subagent"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/agentcore"
+	"github.com/infinmalum/norma-e/harness"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/subagent"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 func main() {

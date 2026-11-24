@@ -8,10 +8,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/harness"
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/harness"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // TestPlanModeGatesThenAllowsWrites proves the plan-mode lifecycle: a write is

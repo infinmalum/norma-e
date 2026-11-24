@@ -12,15 +12,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/infinmalum/Lapua/compaction"
-	"github.com/infinmalum/Lapua/harness"
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/memory"
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/plan"
-	"github.com/infinmalum/Lapua/skill"
-	"github.com/infinmalum/Lapua/tool"
-	"github.com/infinmalum/Lapua/transcript"
+	"github.com/infinmalum/norma-e/compaction"
+	"github.com/infinmalum/norma-e/harness"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/memory"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/plan"
+	"github.com/infinmalum/norma-e/skill"
+	"github.com/infinmalum/norma-e/tool"
+	"github.com/infinmalum/norma-e/transcript"
 )
 
 // Options configures a Session (FR-07).

@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/noa"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/noa"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // compressedSession returns a session with one real block, plus the history it

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 func TestSaveScanReadRelevant(t *testing.T) {

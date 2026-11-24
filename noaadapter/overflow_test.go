@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // The three harness-facing methods are the whole public surface between noa and

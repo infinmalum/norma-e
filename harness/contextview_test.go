@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // noopCompactor implements Compactor but NOT ContextView: the loop must fall

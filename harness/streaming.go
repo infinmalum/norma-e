@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // streamExec executes tool calls from a completed model response, subject to a FIFO +

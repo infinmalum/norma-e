@@ -9,7 +9,7 @@ package harness
 import (
 	"fmt"
 
-	"github.com/infinmalum/Lapua/llm"
+	"github.com/infinmalum/norma-e/llm"
 )
 
 // EventKind classifies a loop Event.

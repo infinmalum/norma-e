@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 // Option is one selectable choice for an AskUserQuestion.

@@ -9,8 +9,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // buildWorkingSession runs a cooperative session far enough to have real blocks,

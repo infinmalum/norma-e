@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/noa"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/noa"
 )
 
 // The ref tag tells the model how to address a message when compressing.

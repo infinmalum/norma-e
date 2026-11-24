@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/infinmalum/Lapua/permission"
+	"github.com/infinmalum/norma-e/permission"
 )
 
 func run(t *testing.T, tl CoreTool, dir string, in any) Result {

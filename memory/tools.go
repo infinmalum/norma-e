@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/infinmalum/Lapua/permission"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/permission"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // Tools returns the RecallMemory and RecordMemory tools bound to a store.

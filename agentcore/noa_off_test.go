@@ -3,10 +3,10 @@ package agentcore
 import (
 	"testing"
 
-	"github.com/infinmalum/Lapua/compaction"
-	"github.com/infinmalum/Lapua/harness"
-	"github.com/infinmalum/Lapua/llm"
-	"github.com/infinmalum/Lapua/tool"
+	"github.com/infinmalum/norma-e/compaction"
+	"github.com/infinmalum/norma-e/harness"
+	"github.com/infinmalum/norma-e/llm"
+	"github.com/infinmalum/norma-e/tool"
 )
 
 // noa is opt-in: a host that never calls noaadapter.Enable must get exactly the
